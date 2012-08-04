@@ -1,0 +1,117 @@
+= minitest-shouldify
+
+This is a bad idea.
+
+== The Problem
+
+So you want to use minitest, but you are familiar with Rspec and don't like change to
+<tt>must</tt>/<tt>wont</tt> from <tt>should</tt>/<tt>should_not</tt>.
+
+== The Solution
+
+First, require minitest-shouldify in your <tt>test_helper.rb</tt> file:
+
+    require "minitest/shouldify"
+
+Second, register your desired expectation names:
+
+    MiniTest::Shouldify.register! "should", "should_not"
+
+Now you are ready to use the new names:
+
+    describe Foo, :bar do
+      it "is bar" do
+        Foo.new.bar.should_equal "bar"
+      end
+
+      it "isn't baz" do
+        Foo.new.bar.should_not_equal "baz"
+      end
+    end
+
+Also, if you are using <tt>minitest-matchers</tt> and have defined a <tt>be_equal_to</tt>
+matcher you could also use this syntax:
+
+    describe Foo, :bar do
+      subject { Foo.new.bar }
+
+      it { should     be_equal_to("bar") }
+      it { should_not be_equal_to("baz") }
+
+      should     { be_equal_to("bar") }
+      should_not { be_equal_to("baz") }
+    end
+
+== Why "must"
+
+Its a fair question, after all the method "should" is common in BDD-style specs.
+Its also not uncommon for technical specifications to have guidelines similar to the following:
+
+     The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+     "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+     document are to be interpreted as described in [RFC2119].
+
+So let's take a look at RFC2119[http://www.ietf.org/rfc/rfc2119.txt]:
+
+    1. MUST   This word, or the terms "REQUIRED" or "SHALL", mean that the
+       definition is an absolute requirement of the specification.
+
+    2. MUST NOT   This phrase, or the phrase "SHALL NOT", mean that the
+       definition is an absolute prohibition of the specification.
+
+    3. SHOULD   This word, or the adjective "RECOMMENDED", mean that there
+       may exist valid reasons in particular circumstances to ignore a
+       particular item, but the full implications must be understood and
+       carefully weighed before choosing a different course.
+
+    4. SHOULD NOT   This phrase, or the phrase "NOT RECOMMENDED" mean that
+       there may exist valid reasons in particular circumstances when the
+       particular behavior is acceptable or even useful, but the full
+       implications should be understood and the case carefully weighed
+       before implementing any behavior described with this label.
+
+
+This clearly states that MUST is a requirement, and SHOULD is a recommendation.
+However, your testing framework doesn't have the context to know under which
+circumstances the tests are allowed to fail. So since you are asserting hard
+requirements anyway, you might as well use the proper vocabulary.
+
+== Wait. Then why "wont"?
+
+Yes, minitest could have chosen to name the expectations <tt>must</tt> and <tt>must_not</tt>.
+But, there are reasons to prefer <tt>wont</tt> over <tt>must_not</tt>.
+One advantage is that <tt>must</tt> and <tt>wont</tt> are the same number of characters,
+just as <tt>assert</tt> and <tt>refute</tt> are.
+
+If you don't like it you can always change it:
+
+    MiniTest::Shouldify.register! "must", "must_not"
+
+== Disclaimer
+
+No really, its probably not a good idea to use this.
+
+== License
+
+(The MIT License)
+
+Copyright (c) 2012 Mike Moore
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -1,0 +1,14 @@
+.autotest
+CHANGELOG.rdoc
+Manifest.txt
+README.rdoc
+Rakefile
+lib/minitest-shouldify.rb
+lib/minitest/shouldify.rb
+minitest-shouldify.gemspec
+test/test_helper.rb
+test/test_must_not.rb
+test/test_sanity.rb
+test/test_shall.rb
+test/test_shouldify.rb
+test/test_wimpy.rb
