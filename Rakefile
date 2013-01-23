@@ -20,6 +20,7 @@ Hoe.spec 'minitest-shouldify' do
   self.testlib      = :minitest
 
   dependency "minitest", ">= 3.5"
+  dependency "minitest-matchers", ">= 1.2", :dev
 end
 
 # vim: syntax=ruby

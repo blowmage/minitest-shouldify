@@ -1,4 +1,5 @@
 require "minitest/autorun"
+require "minitest/matchers"
 require "minitest/shouldify"
 
 class Foo
