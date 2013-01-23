@@ -1,3 +1,8 @@
-=== 0.0.1 / 2012-08-04
+=== 1.1.0 / 2013-01-23
+
+* Update minitest dependency
+* Add Travis-CI
+
+=== 1.0 / 2012-08-04
 
 * Hello world!

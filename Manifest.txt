@@ -1,4 +1,5 @@
 .autotest
+.travis.yml
 CHANGELOG.rdoc
 Manifest.txt
 README.rdoc
