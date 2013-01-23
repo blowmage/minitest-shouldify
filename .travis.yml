@@ -1,0 +1,13 @@
+---
+before_install:
+- gem install hoe-travis minitest-matchers --no-rdoc --no-ri
+before_script:
+- rake travis:before -t
+language: ruby
+notifications:
+  email:
+  - mike@blowmage.com
+rvm:
+- 1.9.3
+- ruby-head
+script: rake travis
