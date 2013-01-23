@@ -19,7 +19,7 @@ Hoe.spec 'minitest-shouldify' do
   self.readme_file  = "README.rdoc"
   self.testlib      = :minitest
 
-  dependency "minitest", "~> 3.5"
+  dependency "minitest", ">= 3.5"
 end
 
 # vim: syntax=ruby
