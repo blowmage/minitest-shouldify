@@ -1,3 +1,7 @@
+=== 1.1.1 / 2013-04-23
+
+* Set bounded minitest dependency
+
 === 1.1.0 / 2013-01-23
 
 * Update minitest dependency

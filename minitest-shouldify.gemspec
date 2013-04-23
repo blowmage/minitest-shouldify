@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "minitest-shouldify"
-  s.version = "1.1.0.20130423160652"
+  s.version = "1.1.1.20130423161218"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mike Moore"]
