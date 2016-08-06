@@ -1,8 +1,9 @@
 ---
 before_install:
-- gem install hoe-travis minitest-matchers --no-rdoc --no-ri
-before_script:
-- rake travis:before -t
+  - gem update --system
+  - gem --version
+script:
+- bundle exec rake
 language: ruby
 notifications:
   email:
@@ -14,4 +15,3 @@ rvm:
 - 2.0.0-p648
 - 1.9.3
 - ruby-head
-script: rake travis
