@@ -1,3 +1,7 @@
+=== 2.0.0 / 2016-08-05
+
+* Update for Minitest 5
+
 === 1.1.1 / 2013-04-23
 
 * Set bounded minitest dependency
