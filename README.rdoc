@@ -15,7 +15,7 @@ First, require minitest-shouldify in your <tt>test_helper.rb</tt> file:
 
 Second, register your desired expectation names:
 
-    MiniTest::Shouldify.register! "should", "should_not"
+    Minitest::Shouldify.register! "should", "should_not"
 
 Now you are ready to use the new names:
 
@@ -85,7 +85,7 @@ just as <tt>assert</tt> and <tt>refute</tt> are.
 
 If you don't like it you can always change it:
 
-    MiniTest::Shouldify.register! "must", "must_not"
+    Minitest::Shouldify.register! "must", "must_not"
 
 == Disclaimer
 

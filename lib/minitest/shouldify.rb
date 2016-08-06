@@ -1,6 +1,6 @@
 require "minitest/spec"
 
-module MiniTest::Shouldify # :nodoc:
+module Minitest::Shouldify # :nodoc:
   class << self
     attr_accessor :run_setup # :nodoc:
     attr_accessor :expectation_owners # :nodoc:
@@ -11,7 +11,7 @@ module MiniTest::Shouldify # :nodoc:
     #
     # Example:
     #
-    #   MiniTest::Shouldify.register! "should", "should_not"
+    #   Minitest::Shouldify.register! "should", "should_not"
     #
     #   describe Foo do
     #     it "is bar" do
@@ -55,8 +55,8 @@ module MiniTest::Shouldify # :nodoc:
 
     def shouldify_matchers new_must, new_wont # :nodoc:
       # Only do this if Matchers exists
-      if MiniTest.const_defined?("Matchers")
-        unless MiniTest::Shouldify.const_defined?("Matcher_#{new_must}_#{new_wont}")
+      if Minitest::Test.respond_to? :register_matcher
+        unless Minitest::Shouldify.const_defined?("Matcher_#{new_must}_#{new_wont}")
           m = Module.new
           m.module_eval "
             def #{new_must}(*args, &block)
@@ -66,10 +66,10 @@ module MiniTest::Shouldify # :nodoc:
               wont(*args, &block)
             end
           "
-          MiniTest::Shouldify.const_set("Matcher_#{new_must}_#{new_wont}", m)
+          Minitest::Shouldify.const_set("Matcher_#{new_must}_#{new_wont}", m)
 
-          MiniTest::Spec.send :include, m
-          MiniTest::Spec.extend m
+          Minitest::Spec.send :include, m
+          Minitest::Spec.extend m
         end
       end
     end
@@ -97,8 +97,8 @@ module MiniTest::Shouldify # :nodoc:
   end
 end
 # Prime the existing expectation owner
-# MiniTest adds all expectations to Object by default
-MiniTest::Shouldify.added_expectation! Object
+# Minitest adds all expectations to Minitest::Expectation by default
+Minitest::Shouldify.added_expectation! Minitest::Expectation
 
 # Add hook to infect_an_assertion
 class Module # :nodoc:
@@ -107,25 +107,23 @@ class Module # :nodoc:
     # Call the original method
     infect_an_assertion_shouldified meth, new_name, dont_flip
     # Register the class that has the expectation
-    MiniTest::Shouldify.added_expectation! self
+    Minitest::Shouldify.added_expectation! self
   end
 end
 
-module MiniTest
+module Minitest
   module Shouldify
     module Lifecycle # :nodoc:
       # Hook into Minitest's Lifecycle to alias methods when tests are run.
       def before_setup # :nodoc:
-        MiniTest::Shouldify.shouldify!
+        Minitest::Shouldify.shouldify!
         super
       end
     end
   end
-  class Unit # :nodoc:
-    class TestCase # :nodoc:
-      # Register the Lifecycle
-      include MiniTest::Shouldify::Lifecycle
-    end
+  class Test # :nodoc:
+    # Register the Lifecycle
+    include Minitest::Shouldify::Lifecycle
   end
 
   ##
@@ -133,7 +131,7 @@ module MiniTest
   #
   # Example:
   #
-  #   MiniTest.shouldify! "should", "should_not"
+  #   Minitest.shouldify! "should", "should_not"
   #
   #   class Foo
   #     def bar; "bar"; end
@@ -149,6 +147,6 @@ module MiniTest
   #     end
   #   end
   def self.shouldify! new_must, new_wont
-    MiniTest::Shouldify.register! new_must, new_wont
+    Minitest::Shouldify.register! new_must, new_wont
   end
 end

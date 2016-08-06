@@ -1,6 +1,6 @@
 require "minitest/shouldify"
 
-module  MiniTest
+module  Minitest
   module Shouldify
     VERSION = "1.1.1"
   end

@@ -1,6 +1,6 @@
 require "helper"
 
-Minitest::Shouldify.register! "should", "should_not"
+Minitest::Shouldify.register! "to", "not_to"
 
 describe Foo do
   let(:foo) { Foo.new }
@@ -52,23 +52,23 @@ describe Foo do
   describe "new matcher" do
     describe :bar do
       it "is bar" do
-        foo.bar.should_equal "bar"
-        value(foo.bar).should_equal "bar"
+        foo.bar.to_equal "bar"
+        value(foo.bar).to_equal "bar"
       end
       it "isn't baz" do
-        foo.bar.should_not_equal "baz"
-        value(foo.bar).should_not_equal "baz"
+        foo.bar.not_to_equal "baz"
+        value(foo.bar).not_to_equal "baz"
       end
     end
 
     describe :baz do
       it "is baz" do
-        foo.baz.should_equal "baz"
-        value(foo.baz).should_equal "baz"
+        foo.baz.to_equal "baz"
+        value(foo.baz).to_equal "baz"
       end
       it "isn't baz" do
-        foo.baz.should_not_equal "bar"
-        value(foo.baz).should_not_equal "bar"
+        foo.baz.not_to_equal "bar"
+        value(foo.baz).not_to_equal "bar"
       end
     end
   end
@@ -76,34 +76,34 @@ describe Foo do
   describe "be_equal_to matcher" do
     describe :bar do
       it "is bar" do
-        foo.bar.should_be_equal_to "bar"
-        value(foo.bar).should_be_equal_to "bar"
+        foo.bar.to_be_equal_to "bar"
+        value(foo.bar).to_be_equal_to "bar"
       end
       it "isn't baz" do
-        foo.bar.should_not_be_equal_to "baz"
-        value(foo.bar).should_not_be_equal_to "baz"
+        foo.bar.not_to_be_equal_to "baz"
+        value(foo.bar).not_to_be_equal_to "baz"
       end
     end
 
     describe :baz do
       it "is baz" do
-        foo.baz.should_be_equal_to "baz"
-        value(foo.baz).should_be_equal_to "baz"
+        foo.baz.to_be_equal_to "baz"
+        value(foo.baz).to_be_equal_to "baz"
       end
       it "isn't baz" do
-        foo.baz.should_not_be_equal_to "bar"
-        value(foo.baz).should_not_be_equal_to "bar"
+        foo.baz.not_to_be_equal_to "bar"
+        value(foo.baz).not_to_be_equal_to "bar"
       end
     end
 
     describe "with subject" do
       subject { foo.bar }
 
-      it { should     be_equal_to("bar") }
-      it { should_not be_equal_to("baz") }
+      it { to     be_equal_to("bar") }
+      it { not_to be_equal_to("baz") }
 
-      should     { be_equal_to("bar") }
-      should_not { be_equal_to("baz") }
+      to     { be_equal_to("bar") }
+      not_to { be_equal_to("baz") }
     end
   end
 

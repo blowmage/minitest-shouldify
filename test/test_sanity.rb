@@ -1,7 +1,7 @@
 require "minitest/autorun"
 require "minitest-shouldify"
 
-class TestSanity < MiniTest::Unit::TestCase
+class TestSanity < Minitest::Test
   def test_sanity
     assert Minitest::Shouldify::VERSION
   end

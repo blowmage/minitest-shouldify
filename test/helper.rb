@@ -1,6 +1,7 @@
 require "minitest/autorun"
 require "minitest/matchers"
 require "minitest/shouldify"
+require "minitest/rg"
 
 class Foo
   def bar
@@ -11,8 +12,7 @@ class Foo
   end
 end
 
-
-module MiniTest
+module Minitest
   module Shouldify
     module Matchers
       class BeEqualTo
@@ -49,6 +49,6 @@ module MiniTest
   end
 end
 
-class MiniTest::Unit::TestCase
-  include MiniTest::Shouldify::Matchers
+class Minitest::Test
+  include Minitest::Shouldify::Matchers
 end
