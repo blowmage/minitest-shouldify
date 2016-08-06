@@ -22,6 +22,7 @@ Hoe.spec 'minitest-shouldify' do
   dependency "minitest-autotest", "~> 1.0", :dev
   dependency "minitest-matchers", "~> 1.4", :dev
   dependency "minitest-rg",       "~> 5.2", :dev
+  dependency "rdoc",              "~> 4.2", :dev
 end
 
 # vim: syntax=ruby
