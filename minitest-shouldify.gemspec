@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
-# stub: minitest-shouldify 1.1.1.20160805190712 ruby lib
+# stub: minitest-shouldify 2.0.0.20160805230022 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "minitest-shouldify".freeze
-  s.version = "1.1.1.20160805190712"
+  s.version = "2.0.0.20160805230022"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description = "Adding all manner of shoulds to Minitest".freeze
   s.email = ["mike@blowmage.com".freeze]
   s.extra_rdoc_files = ["CHANGELOG.rdoc".freeze, "Manifest.txt".freeze, "README.rdoc".freeze]
-  s.files = [".autotest".freeze, ".travis.yml".freeze, "CHANGELOG.rdoc".freeze, "Manifest.txt".freeze, "README.rdoc".freeze, "Rakefile".freeze, "lib/minitest-shouldify.rb".freeze, "lib/minitest/shouldify.rb".freeze, "minitest-shouldify.gemspec".freeze, "test/test_helper.rb".freeze, "test/test_must_not.rb".freeze, "test/test_sanity.rb".freeze, "test/test_shall.rb".freeze, "test/test_shouldify.rb".freeze, "test/test_wimpy.rb".freeze]
+  s.files = [".autotest".freeze, ".travis.yml".freeze, "CHANGELOG.rdoc".freeze, "Gemfile".freeze, "Manifest.txt".freeze, "README.rdoc".freeze, "Rakefile".freeze, "lib/minitest-shouldify.rb".freeze, "lib/minitest/shouldify.rb".freeze, "minitest-shouldify.gemspec".freeze, "test/helper.rb".freeze, "test/test_must_not.rb".freeze, "test/test_sanity.rb".freeze, "test/test_shall.rb".freeze, "test/test_shouldify.rb".freeze, "test/test_to.rb".freeze, "test/test_wimpy.rb".freeze]
   s.homepage = "http://blowmage.com/minitest-shouldify".freeze
   s.licenses = ["MIT".freeze]
   s.rdoc_options = ["--main".freeze, "README.rdoc".freeze]
