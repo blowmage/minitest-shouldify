@@ -17,6 +17,7 @@ Hoe.spec 'minitest-shouldify' do
   self.history_file = "CHANGELOG.rdoc"
   self.readme_file  = "README.rdoc"
   self.testlib      = :minitest
+  self.licenses     = "MIT"
 
   dependency "minitest", "~> 5.8"
   dependency "minitest-autotest", "~> 1.0", :dev
